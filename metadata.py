@@ -89,7 +89,6 @@ def divide(duration, speed):
 
     return ":".join(map(str, og))
 
-print(sys.argv[1:len(sys.argv)])
 if(len(sys.argv) > 1):
     files = sys.argv[1:len(sys.argv)]
 else:
