@@ -97,7 +97,7 @@ files = list(filter(only_video_audio_files, files))
 
 cwd = os.getcwd().split("\\")[-1]
 # print(style.BRIGHT + fg.CYAN + cwd.title() + ":" + fg.RESET + style.RESET_ALL, sep="")
-print(cwd.title(), ":", sep="")
+if(len(files) > 0) print(cwd.title(), ":", sep="")
 individual_file_duration = {}
 total_duration = "00:00"
 if(len(files) > 0):
