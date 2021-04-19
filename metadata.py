@@ -97,10 +97,10 @@ files = list(filter(only_video_audio_files, files))
 
 cwd = os.getcwd().split("\\")[-1]
 # print(style.BRIGHT + fg.CYAN + cwd.title() + ":" + fg.RESET + style.RESET_ALL, sep="")
-if(len(files) > 0): print(cwd.title(), ":", sep="")
 individual_file_duration = {}
 total_duration = "00:00"
 if(len(files) > 0):
+    print(cwd.title(), ":", sep="")
     for file in files:
         metadata = TinyTag.get(file)
         duration = ""
@@ -113,20 +113,21 @@ if(len(files) > 0):
         
         individual_file_duration[file] = duration
         total_duration = add_durations(total_duration, duration)
+    
+    print("Total Duration:", total_duration)
+    print("No of files:", len(files))
+    print("Total Duration (1.25x):", divide(total_duration, 1.25))
+    print("Total Duration (1.5x):", divide(total_duration, 1.5))
+    print("Total Duration (1.75x):", divide(total_duration, 1.75))
+    print("Total Duration (2x):", divide(total_duration, 2))
+    print("")
+    print("Enter 1 to get individual file duration")
+    print("Enter any other character to quit")
 else:
     print("No audio / video files found")
     msvcrt.getch()
 
-print("Total Duration:", total_duration)
-print("No of files:", len(files))
-print("Total Duration (1.25x):", divide(total_duration, 1.25))
-print("Total Duration (1.5x):", divide(total_duration, 1.5))
-print("Total Duration (1.75x):", divide(total_duration, 1.75))
-print("Total Duration (2x):", divide(total_duration, 2))
-print("")
-print("Enter 1 to get individual file duration")
-print("Enter any other character to quit")
-
+# Specially formatted Console Outputs
 # print("Total Duration:", style.BRIGHT, total_duration, style.RESET_ALL)
 # print("No of files:", style.BRIGHT, len(files), style.RESET_ALL)
 # print("Total Duration" + fg.GREEN, "(1.25x): "  + fg.RESET + fg.CYAN + divide(total_duration, 1.25) + fg.RESET)
@@ -137,7 +138,7 @@ print("Enter any other character to quit")
 # print("Enter 1 to get individual file duration")
 # print("Enter any other character to quit")
 
-# 2. Get Duration for selected items
+# 2. Get Duration for selected items - Dont know yet
 
 try:
     x = int(input())
