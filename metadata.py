@@ -115,7 +115,7 @@ if(len(files) > 0):
         total_duration = add_durations(total_duration, duration)
 else:
     print("No audio / video files found")
-    exit()
+    msvcrt.getch()
 
 print("Total Duration:", total_duration)
 print("No of files:", len(files))
