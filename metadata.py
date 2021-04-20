@@ -51,31 +51,44 @@ def print_duration(duration_in_secs):
         minutes = int(duration_in_secs // 60)
         seconds = int(math.floor(duration_in_secs - (minutes*60)))
         # Format the numbers correctly
-        if(minutes < 10): minutes = str("0" + str(minutes))
-        if(seconds < 10): seconds = str("0" + str(seconds))
+        if(minutes < 10):
+            minutes = str("0" + str(minutes))
+        if(seconds < 10):
+            seconds = str("0" + str(seconds))
         duration = str(minutes) + ":" + str(seconds)
     elif (duration_in_secs < 86400):
         # HH:MM:SS
         hours = int(duration_in_secs // 3600)
         minutes = int(math.floor(duration_in_secs - (hours * 3600)) // 60)
-        seconds = int(math.floor(duration_in_secs - (hours*3600) - (minutes*60)))
+        seconds = int(math.floor(duration_in_secs -
+                      (hours*3600) - (minutes*60)))
         # Format the numbers correctly
-        if(hours < 10): hours = str("0" + str(hours))
-        if(minutes < 10): minutes = str("0" + str(minutes))
-        if(seconds < 10): seconds = str("0" + str(seconds))
+        if(hours < 10):
+            hours = str("0" + str(hours))
+        if(minutes < 10):
+            minutes = str("0" + str(minutes))
+        if(seconds < 10):
+            seconds = str("0" + str(seconds))
         duration = str(hours) + ":" + str(minutes) + ":" + str(seconds)
     elif (duration_in_secs < 2592000):
         # DD:HH:MM:SS
         days = int(duration_in_secs // 86400)
         hours = int(math.floor(duration_in_secs - (days * 86400)) // 3600)
-        minutes = int(math.floor(duration_in_secs - (days*86400) - (hours*3600)) // 60)
-        seconds = int(math.floor(duration_in_secs - (days*86400) - (hours*3600) - (minutes*60)))
+        minutes = int(math.floor(duration_in_secs -
+                      (days*86400) - (hours*3600)) // 60)
+        seconds = int(math.floor(duration_in_secs -
+                      (days*86400) - (hours*3600) - (minutes*60)))
         # Format the numbers correctly
-        if(days < 10): days = str("0" + str(days))
-        if(hours < 10): hours = str("0" + str(hours))
-        if(minutes < 10): minutes = str("0" + str(minutes))
-        if(seconds < 10): seconds = str("0" + str(seconds))
-        duration = str(days) + ":" + str(hours) + ":" + str(minutes) + ":" + str(seconds)
+        if(days < 10):
+            days = str("0" + str(days))
+        if(hours < 10):
+            hours = str("0" + str(hours))
+        if(minutes < 10):
+            minutes = str("0" + str(minutes))
+        if(seconds < 10):
+            seconds = str("0" + str(seconds))
+        duration = str(days) + ":" + str(hours) + ":" + \
+            str(minutes) + ":" + str(seconds)
 
     return duration
 
@@ -99,12 +112,15 @@ total_duration_in_secs = 0
 if(len(files) > 0):
     for file in files:
         metadata = TinyTag.get(file)
-        individual_file_duration[file] = print_duration(math.floor(metadata.duration))
+        individual_file_duration[file] = print_duration(
+            math.floor(metadata.duration))
         total_duration_in_secs += metadata.duration
 
     total_duration_in_secs_str = print_duration(total_duration_in_secs)
     print("Total Duration:", total_duration_in_secs_str)
     print("No of files:", len(files))
+    print("Average length of File:", print_duration(
+        total_duration_in_secs / len(files)))
     print("Total Duration (1.25x):", divide(total_duration_in_secs, 1.25))
     print("Total Duration (1.5x):", divide(total_duration_in_secs, 1.5))
     print("Total Duration (1.75x):", divide(total_duration_in_secs, 1.75))
