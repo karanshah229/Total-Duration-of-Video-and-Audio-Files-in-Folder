@@ -1,1 +1,2 @@
 tinytag==1.5.0
+winregistry==0.8.3
