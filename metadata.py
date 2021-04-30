@@ -125,8 +125,10 @@ if(len(files) > 0):
     print("Total Duration (1.5x):", divide(total_duration_in_secs, 1.5))
     print("Total Duration (1.75x):", divide(total_duration_in_secs, 1.75))
     print("Total Duration (2x):", divide(total_duration_in_secs, 2))
+    print("Total Duration (2.5x):", divide(total_duration_in_secs, 2.5))
     print("")
     print("Enter 1 to get individual file duration")
+    print("Enter 2 to enter custom multiplier (?)x")
     print("Enter any other character to quit")
 else:
     print("No audio / video files found")
@@ -140,6 +142,7 @@ else:
 # print("Total Duration" + fg.GREEN, "(1.5x): "  + fg.RESET + fg.CYAN + divide(total_duration_in_secs, 1.5) + fg.RESET)
 # print("Total Duration" + fg.GREEN, "(1.75x): " + fg.RESET + fg.CYAN + divide(total_duration_in_secs, 1.75) + fg.RESET)
 # print("Total Duration" + fg.GREEN, "(2x): " + fg.RESET + fg.CYAN + divide(total_duration_in_secs, 2) + fg.RESET)
+# print("Total Duration" + fg.GREEN, "(2.5x): " + fg.RESET + fg.CYAN + divide(total_duration_in_secs, 2.5) + fg.RESET)
 # print("")
 # print("Enter 1 to get individual file duration")
 # print("Enter any other character to quit")
@@ -147,12 +150,19 @@ else:
 # 2. Get Duration for selected items - Dont know yet
 
 try:
-    x = int(input())
-    if(x == 1):
-        print()
-        for x in individual_file_duration:
-            print(x, " => ", individual_file_duration[x])
-    print("\nEnter any character to quit")
-    msvcrt.getch()
+    while True:
+        x = int(input())
+        if x == 1:
+            print()
+            for x in individual_file_duration:
+                print(x, " => ", individual_file_duration[x])
+        elif x == 2:
+            multiplier = float(input("\nEnter multiplier: "))
+            print("Total Duration (",multiplier,"x): ", divide(total_duration_in_secs, multiplier), sep="")
+        else: exit()
+        print("\nEnter 1 to get individual file duration")
+        print("Enter 2 to enter custom multiplier (?)x")
+        print("Enter any other character to quit")
 except Exception as e:
+    # print(e)
     exit()
